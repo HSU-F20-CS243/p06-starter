@@ -46,6 +46,15 @@ public:
         return result.substr(0, index);
     }
 
+    /*
+    Returns a 2D vector [ROW][DATA].
+    The outside vector represents the line in the file.  Each line is itself a vector of data.
+    DATA[X][0] tells you which regular expression was used to parse the line.  This can be used
+               to tell you what type of command the line is (e.g. A instruction, C instruction, jump, etc.)
+    DATA[X][1] always represents the raw line in the event that you need it
+    DATA[X][2] through DATA[X][N] represent the pieces of each line that will be helpful in 
+       converting the line to HACK machine language
+    */
 	vector<vector<string>> processFile()
 	{
         vector<vector<string>> result{};
@@ -67,6 +76,7 @@ public:
                     if (match_found == true)
                     {
                         vector<string> pieces{};
+                        pieces.push_back(to_string(i));
                         for (auto piece : match)
                         {
                             pieces.push_back(piece);
