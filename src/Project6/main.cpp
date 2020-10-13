@@ -39,8 +39,31 @@ void preprocessor_example()
 	cout << "preprocessing complete" << endl;
 }
 
-int main(void)
+int main(int argc, char* argv[])
 {
-	symbols_table_example();
-	preprocessor_example();
+
+#ifdef _DEBUG
+	//makes debugging easier by allowing you to directly load in files w/o using command line
+	Preprocessor prep{ "Max.asm" };
+#else
+	if (argc == 4)
+	{
+		Preprocessor prep{ argv[2] };
+
+		//TODO: use argv[3] to write to output file
+		ofstream output{ argv[3] };
+	}
+	else
+	{
+
+		cout << "Usage: PROGRAM.EXE <ASM_FILE> <HACK_FILE>" << endl;
+		return;
+	}
+	
+#endif // DEBUG
+
+	//TODO: begin work here.
+	vector<vector<string>> lines = prep.processFile();
+
+	//symbols_table_example();
 }
