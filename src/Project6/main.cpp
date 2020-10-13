@@ -46,19 +46,17 @@ int main(int argc, char* argv[])
 	//makes debugging easier by allowing you to directly load in files w/o using command line
 	Preprocessor prep{ "Max.asm" };
 #else
-	if (argc == 4)
+	
+	if (argc != 4)
 	{
-		Preprocessor prep{ argv[2] };
-
-		//TODO: use argv[3] to write to output file
-		ofstream output{ argv[3] };
-	}
-	else
-	{
-
 		cout << "Usage: PROGRAM.EXE <ASM_FILE> <HACK_FILE>" << endl;
-		return;
+		return -1;
 	}
+
+	Preprocessor prep{ argv[2] };
+
+	//TODO: use argv[3] to write to output file
+	ofstream output{ argv[3] };
 	
 #endif // DEBUG
 
