@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <unordered_map>
+
 #include "Preprocessor.hpp"
 #include "SymbolsTable.hpp"
 
@@ -18,11 +20,11 @@ void symbols_table_example()
 	//To add a new symbol, just access it and the symbols table will
 	//associate that symbol with the next avaialble slot in memory
 	symbols["MyVariable"];
-	
+
 	//should be 16 since it's the first variable that we defined
 	cout << "Location of MyVariable: " << symbols["MyVariable"] << endl;
 
-	
+
 	cout << endl;
 }
 
@@ -44,9 +46,9 @@ int main(int argc, char* argv[])
 
 #ifdef _DEBUG
 	//makes debugging easier by allowing you to directly load in files w/o using command line
-	Preprocessor prep{ "Max.asm" };
+	Preprocessor prep{ "PongL.asm" };
 #else
-	
+
 	if (argc != 4)
 	{
 		cout << "Usage: PROGRAM.EXE <ASM_FILE> <HACK_FILE>" << endl;
@@ -57,11 +59,16 @@ int main(int argc, char* argv[])
 
 	//TODO: use argv[3] to write to output file
 	ofstream output{ argv[3] };
-	
+
 #endif // DEBUG
 
 	//TODO: begin work here.
 	vector<vector<string>> lines = prep.processFile();
 
-	//symbols_table_example();
+	ofstream output_debug{ "output_debug.asm" };
+	for (auto line : lines)
+	{
+		output_debug << line[1] << endl;
+	}
+	output_debug.close();
 }

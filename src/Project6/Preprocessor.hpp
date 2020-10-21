@@ -13,9 +13,10 @@ private:
 	const string LABEL = "\\(([a-zA-Z.$:_]+[\\da-zA-Z.$:_]*)\\)";
 	const string A_CONST = "(@)([\\d]+)";
 	const string A_SYMBL = "(@)([a-zA-Z.$:_]+[\\da-zA-Z.$:_]*)";
-	const string C_COMP = "([DMA]*)=([!-DMA][-+\\|]*[DMA\\d]*)";
+	const string C_COMP = "([DMA]*)=([!-DMA][-+\\|&]*[DMA\\d]*)";
 	const string C_JMP = "([DMA\\d]);([J][\\w]+)";
 	vector<string> regular_expressions;
+    vector<string> _failed_lines;
 	string _file_to_process;
 
 public:
@@ -67,6 +68,7 @@ public:
                 getline(to_process, line);
                 line = removeAllWhiteSpace(line);
                 line = removeComments(line);
+                bool has_match = false;
                 for (int i = 0; i < regular_expressions.size(); i++)
                 {
                     string& expression = regular_expressions[i];
@@ -75,6 +77,7 @@ public:
                     auto match_found = regex_match(line, match, pattern);
                     if (match_found == true)
                     {
+                        has_match = true;
                         vector<string> pieces{};
                         pieces.push_back(to_string(i));
                         for (auto piece : match)
@@ -84,6 +87,10 @@ public:
                         result.push_back(pieces);
                         break;
                     }
+                }
+                if (has_match == false)
+                {
+                    _failed_lines.push_back(line);
                 }
             }
         }
