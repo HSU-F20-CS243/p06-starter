@@ -149,12 +149,14 @@
     <None Include="Add.asm">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="AllOps.asm" />
     <None Include="Max.asm">
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="MaxL.asm">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="output_debug.asm" />
     <None Include="Pong.asm">
       <DeploymentContent>true</DeploymentContent>
     </None>

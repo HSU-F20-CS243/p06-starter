@@ -49,5 +49,11 @@
     <None Include="RectL.asm">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="output_debug.asm">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="AllOps.asm">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
