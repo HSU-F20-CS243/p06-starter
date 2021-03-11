@@ -55,5 +55,32 @@
     <None Include="AllOps.asm">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="AllOps.hack">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="simple.asm">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="simple.hack">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sample2.asm">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sample2.hack">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sample3.asm">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sample3.hack">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sample4.asm">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="sample4.hack">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -150,6 +150,7 @@
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="AllOps.asm" />
+    <None Include="AllOps.hack" />
     <None Include="Max.asm">
       <DeploymentContent>true</DeploymentContent>
     </None>
@@ -169,6 +170,14 @@
     <None Include="RectL.asm">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="sample2.asm" />
+    <None Include="sample2.hack" />
+    <None Include="sample3.asm" />
+    <None Include="sample3.hack" />
+    <None Include="sample4.asm" />
+    <None Include="sample4.hack" />
+    <None Include="simple.asm" />
+    <None Include="simple.hack" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

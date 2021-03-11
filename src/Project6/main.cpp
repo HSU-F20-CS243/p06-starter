@@ -46,12 +46,13 @@ int main(int argc, char* argv[])
 
 #ifdef _DEBUG
 	//makes debugging easier by allowing you to directly load in files w/o using command line
-	Preprocessor prep{ "PongL.asm" };
+	Preprocessor prep{ "sample4.asm" };
+	ofstream output{ "sample4.hack" };
 #else
 
 	if (argc != 4)
 	{
-		cout << "Usage: PROGRAM.EXE <ASM_FILE> <HACK_FILE>" << endl;
+		cout << "Usage: <PROGRAM_NAME>.EXE <ASM_FILE> <HACK_FILE>" << endl;
 		return -1;
 	}
 
@@ -64,11 +65,31 @@ int main(int argc, char* argv[])
 
 	//TODO: begin work here.
 	vector<vector<string>> lines = prep.processFile();
+	SymbolsTable symbols{};
+	int program_counter = 0;
 
-	ofstream output_debug{ "output_debug.asm" };
 	for (auto line : lines)
 	{
-		output_debug << line[1] << endl;
+		//Demo code typed in 3/10/2021 lecture.  May or may not be useful for
+		//actual program.
+		output << "[";
+		for (auto item : line)
+		{
+			output << item << ",";
+		}
+		//A instruction with a variable (symbol)
+		int instruction_type = stoi(line[0]);
+		if (instruction_type == 0)
+		{
+			symbols[line[2]] = program_counter;
+		}
+		else if (instruction_type == 2)
+		{
+			int lookup_value = symbols[line[3]];
+			output << lookup_value;
+		}
+		output << "]" << endl;
+		program_counter++;
 	}
-	output_debug.close();
+	output.close();
 }
